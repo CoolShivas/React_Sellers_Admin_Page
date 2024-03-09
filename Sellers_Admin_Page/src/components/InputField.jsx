@@ -1,6 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import { AuthContext } from "../store/AuthContext";
 
-const InputField = ({ handlerOnAddProductsABC }) => {
+const InputField = () => {
+
+    const { handlerOnAddProducts } = useContext(AuthContext);
 
     const [valProductId, setProductId] = useState();
     const [valSellingPrice, setSellingPrice] = useState();
@@ -43,7 +46,7 @@ const InputField = ({ handlerOnAddProductsABC }) => {
     const handleOnFormSubmit = (event) => {
         event.preventDefault();
         // localStorage.setItem('details', valProductName);
-        handlerOnAddProductsABC(valProductId, valSellingPrice, valProductName, valCategory);
+        handlerOnAddProducts(valProductId, valSellingPrice, valProductName, valCategory);
         setProductId('');
         setSellingPrice('');
         setProductName('');

@@ -2,21 +2,21 @@ import { AuthContext } from "../store/AuthContext";
 import { useContext } from "react";
 import AllIndividualPro from "./AllIndividualPro";
 
-const AllProducts = ({ handlerOnDeleteProductsABC }) => {
+const AllProducts = () => {
 
-    const inputValueFromContext = useContext(AuthContext);
+    const { inputValue } = useContext(AuthContext);
 
     return <>
         <h2> Products :- </h2>
         <ul className="ulTag">
-            {inputValueFromContext.map((arr) => {
+            {inputValue.map((arr) => {
                 return <AllIndividualPro
                     key={arr.productId}
                     productIdABC={arr.productId}
                     sellingPriceABC={arr.sellingPrice}
                     productNameABC={arr.productName}
                     categoryABC={arr.category}
-                    handlerOnDeleteProductsXYZ={handlerOnDeleteProductsABC}
+                // handlerOnDeleteProductsXYZ={handlerOnDeleteProductsABC}
                 ></AllIndividualPro>
             })}
 

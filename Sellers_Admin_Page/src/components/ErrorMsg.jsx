@@ -3,11 +3,11 @@ import { AuthContext } from "../store/AuthContext";
 
 const ErrorMsg = () => {
 
-    const inputValueFromContext = useContext(AuthContext);
+    const { inputValue } = useContext(AuthContext);
 
     return <>
         {/* {inputValueABC.length === 0 && <p> Nothing to display.</p>} */}
-        {inputValueFromContext.length === 0 && <p> Nothing to display.</p>}
+        {inputValue.length === 0 && <p> Nothing to display.</p>}
     </>
 }
 

@@ -30,15 +30,19 @@ function App() {
     setInputValue(deletePro);
   }
 
-  return <AuthContext.Provider value={inputValue}>
+  return <AuthContext.Provider value={{
+    inputValue,
+    handlerOnAddProducts,
+    handlerOnDeleteProducts,
+  }}>
     <center>
       <AppName></AppName>
       <InputField
-        handlerOnAddProductsABC={handlerOnAddProducts}
+      // handlerOnAddProductsABC={handlerOnAddProducts}
       ></InputField>
       <AllProducts
-        // inputValueABC={inputValue}
-        handlerOnDeleteProductsABC={handlerOnDeleteProducts}
+      // inputValueABC={inputValue}
+      // handlerOnDeleteProductsABC={handlerOnDeleteProducts}
       ></AllProducts>
       <ErrorMsg
       // inputValueABC={inputValue}
