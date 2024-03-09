@@ -1,3 +1,5 @@
+import { AuthContext } from "./store/AuthContext";
+import ErrorMsg from "./components/ErrorMsg";
 import AllProducts from "./components/AllProducts";
 import { useState } from "react";
 import InputField from "./components/InputField";
@@ -6,16 +8,7 @@ import AppName from "./components/AppName";
 
 function App() {
 
-  const listOfProducts = [
-    {
-      productId: 1,
-      sellingPrice: 1250,
-      productName: "Almond",
-      category: "Food",
-    }
-  ];
-
-  const [inputValue, setInputValue] = useState(listOfProducts);
+  const [inputValue, setInputValue] = useState([]);
 
   const handlerOnAddProducts = (productIdRST, sellingPriceRST, productNameRST, categoryRST) => {
     console.log(`All details are ${productIdRST} - ${sellingPriceRST} - ${productNameRST} - ${categoryRST} `);
@@ -37,13 +30,21 @@ function App() {
     setInputValue(deletePro);
   }
 
-  return <center>
-    <AppName></AppName>
-    <InputField handlerOnAddProductsABC={handlerOnAddProducts}></InputField>
-    <AllProducts inputValueABC={inputValue}
-      handlerOnDeleteProductsABC={handlerOnDeleteProducts}
-    ></AllProducts>
-  </center>
+  return <AuthContext.Provider value={inputValue}>
+    <center>
+      <AppName></AppName>
+      <InputField
+        handlerOnAddProductsABC={handlerOnAddProducts}
+      ></InputField>
+      <AllProducts
+        // inputValueABC={inputValue}
+        handlerOnDeleteProductsABC={handlerOnDeleteProducts}
+      ></AllProducts>
+      <ErrorMsg
+      // inputValueABC={inputValue}
+      ></ErrorMsg>
+    </center>
+  </AuthContext.Provider>
 }
 
 export default App;
