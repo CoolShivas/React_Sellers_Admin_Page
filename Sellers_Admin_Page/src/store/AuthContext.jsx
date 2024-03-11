@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { createContext } from "react";
 
 export const AuthContext = createContext({
@@ -38,6 +38,9 @@ const AuthContextProvider = ({ children }) => {
 
     const [inputValue, dispatchInputValue] = useReducer(inputReducer, []);
 
+    useEffect(() => {
+        localStorage.setItem('details', JSON.stringify(inputValue));
+    }, [inputValue])
 
     const handlerOnAddProducts = (productIdRST, sellingPriceRST, productNameRST, categoryRST) => {
         console.log(`All details are ${productIdRST} - ${sellingPriceRST} - ${productNameRST} - ${categoryRST} `);

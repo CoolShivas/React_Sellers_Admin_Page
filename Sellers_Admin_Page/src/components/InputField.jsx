@@ -45,7 +45,7 @@ const InputField = () => {
 
     const handleOnFormSubmit = (event) => {
         event.preventDefault();
-        // localStorage.setItem('details', valProductName);
+
         handlerOnAddProducts(valProductId, valSellingPrice, valProductName, valCategory);
         setProductId('');
         setSellingPrice('');

@@ -7,7 +7,7 @@ const AllProducts = () => {
     const { inputValue } = useContext(AuthContext);
 
     return <>
-        <h2> Products :- </h2>
+
         <ul className="ulTag">
             {inputValue.map((arr) => {
                 return <AllIndividualPro
@@ -21,6 +21,7 @@ const AllProducts = () => {
             })}
 
         </ul>
+
     </>
 }
 
