@@ -8,7 +8,12 @@ export const AuthContext = createContext({
 });
 
 
-
+const getDataOnRefreshPage = () => {
+    let list = localStorage.getItem('details');
+    if (list) {
+        return JSON.parse(localStorage.getItem('details'));
+    }
+}
 
 const inputReducer = (currState, action) => {
 
@@ -28,6 +33,7 @@ const inputReducer = (currState, action) => {
         })
     }
     return newProductList;
+
 }
 
 
@@ -36,11 +42,15 @@ const inputReducer = (currState, action) => {
 
 const AuthContextProvider = ({ children }) => {
 
-    const [inputValue, dispatchInputValue] = useReducer(inputReducer, []);
+    const [inputValue, dispatchInputValue] = useReducer(inputReducer, getDataOnRefreshPage());
 
     useEffect(() => {
         localStorage.setItem('details', JSON.stringify(inputValue));
     }, [inputValue])
+
+    // useEffect(() => {
+    //     getDataOnRefreshPage();
+    // }, [])
 
     const handlerOnAddProducts = (productIdRST, sellingPriceRST, productNameRST, categoryRST) => {
         console.log(`All details are ${productIdRST} - ${sellingPriceRST} - ${productNameRST} - ${categoryRST} `);
