@@ -1,11 +1,13 @@
 import { useEffect, useReducer } from "react";
 import { createContext } from "react";
 
+
 export const AuthContext = createContext({
     inputValue: [],
     handlerOnAddProducts: () => { },
     handlerOnDeleteProducts: () => { },
 });
+
 
 
 const getDataOnRefreshPage = () => {
@@ -45,12 +47,9 @@ const AuthContextProvider = ({ children }) => {
     const [inputValue, dispatchInputValue] = useReducer(inputReducer, getDataOnRefreshPage());
 
     useEffect(() => {
-        localStorage.setItem('details', JSON.stringify(inputValue));
+        localStorage.setItem('details', JSON.stringify(inputValue))
     }, [inputValue])
 
-    // useEffect(() => {
-    //     getDataOnRefreshPage();
-    // }, [])
 
     const handlerOnAddProducts = (productIdRST, sellingPriceRST, productNameRST, categoryRST) => {
         console.log(`All details are ${productIdRST} - ${sellingPriceRST} - ${productNameRST} - ${categoryRST} `);

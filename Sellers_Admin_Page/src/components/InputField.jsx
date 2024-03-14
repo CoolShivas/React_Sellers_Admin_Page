@@ -42,6 +42,10 @@ const InputField = () => {
     }
 
 
+    // const calculateTotal = () => {
+    //     return inputValue.reduce((total, product) => total + parseFloat(product.sellingPrice), 0);
+    // };
+
 
     const handleOnFormSubmit = (event) => {
         event.preventDefault();
@@ -123,8 +127,8 @@ const InputField = () => {
 
             </div>
         </form>
-
-
+        {/* <h2> Products :- </h2> */}
+        {/* <h2> Total Value :- Rs {calculateTotal()} /-</h2> */}
     </div>
 }
 
