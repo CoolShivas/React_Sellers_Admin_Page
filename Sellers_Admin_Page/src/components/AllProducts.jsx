@@ -19,8 +19,8 @@ const AllProducts = () => {
                 // handlerOnDeleteProductsXYZ={handlerOnDeleteProductsABC}
                 ></AllIndividualPro>
             })}
-
         </ul>
+
 
     </>
 }

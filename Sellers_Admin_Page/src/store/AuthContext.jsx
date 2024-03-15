@@ -17,6 +17,7 @@ const getDataOnRefreshPage = () => {
     }
 }
 
+
 const inputReducer = (currState, action) => {
 
     let newProductList = currState;
@@ -32,6 +33,7 @@ const inputReducer = (currState, action) => {
     else if (action.type === "DELETE_PRO") {
         newProductList = currState.filter((brr) => {
             return brr.productName !== action.payload.del;
+            // return brr.productId !== action.payload.del;
         })
     }
     return newProductList;
@@ -44,7 +46,7 @@ const inputReducer = (currState, action) => {
 
 const AuthContextProvider = ({ children }) => {
 
-    const [inputValue, dispatchInputValue] = useReducer(inputReducer, getDataOnRefreshPage());
+    const [inputValue, dispatchInputValue] = useReducer(inputReducer, getDataOnRefreshPage() || []);
 
     useEffect(() => {
         localStorage.setItem('details', JSON.stringify(inputValue))
@@ -57,7 +59,14 @@ const AuthContextProvider = ({ children }) => {
         const productDetails = {
             type: "ADD_PRO",
             payload: {
-                productIdRST, sellingPriceRST, productNameRST, categoryRST,
+                // productId: productIdRST,
+                // sellingPrice: sellingPriceRST,
+                // productName: productNameRST,
+                // category: categoryRST,
+                productIdRST: new Date().getTime().toString(),
+                sellingPriceRST,
+                productNameRST,
+                categoryRST,
             }
         }
         dispatchInputValue(productDetails);
