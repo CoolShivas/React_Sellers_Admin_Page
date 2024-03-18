@@ -32,8 +32,10 @@ const inputReducer = (currState, action) => {
     }
     else if (action.type === "DELETE_PRO") {
         newProductList = currState.filter((brr) => {
-            return brr.productName !== action.payload.del;
-            // return brr.productId !== action.payload.del;
+            // return brr.productName !== action.payload.del;
+            console.log(action.payload.del)
+            return brr.productId !== action.payload.del;
+
         })
     }
     return newProductList;
@@ -59,11 +61,8 @@ const AuthContextProvider = ({ children }) => {
         const productDetails = {
             type: "ADD_PRO",
             payload: {
-                // productId: productIdRST,
-                // sellingPrice: sellingPriceRST,
-                // productName: productNameRST,
-                // category: categoryRST,
                 productIdRST: new Date().getTime().toString(),
+                // productIdRST,
                 sellingPriceRST,
                 productNameRST,
                 categoryRST,

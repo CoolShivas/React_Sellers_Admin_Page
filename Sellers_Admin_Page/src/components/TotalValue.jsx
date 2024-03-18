@@ -6,7 +6,7 @@ const TotalValue = () => {
     const { inputValue } = useContext(AuthContext)
 
     const calculateTotal = () => {
-        return inputValue.reduce((total, product) => total + parseFloat(product.sellingPrice), 0);
+        return inputValue.reduce((acc, curr) => acc + parseFloat(curr.sellingPrice), 0);
     };
 
     return <>
